@@ -10,11 +10,11 @@ use Elegantly\Yousign\Integration\Requests\Document\GetSignatureDocuments;
 use Elegantly\Yousign\Integration\Requests\Document\ReplaceSignatureDocument;
 use Elegantly\Yousign\Integration\Requests\Document\UpdateSignatureDocument;
 use Elegantly\Yousign\Integration\Requests\Document\UploadSignatureDocument;
-use Elegantly\Yousign\Integration\Resource;
+use Elegantly\Yousign\Integration\Resource as BaseResource;
 use Psr\Http\Message\StreamInterface;
 use Saloon\Http\Response;
 
-class Document extends Resource
+class Document extends BaseResource
 {
     public function get(
         string $signatureRequestId,

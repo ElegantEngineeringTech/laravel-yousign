@@ -55,10 +55,16 @@ class UploadSignatureDocument extends Request implements HasBody
         )))->when($this->password, fn (Collection $params) => $params->push(new MultipartValue(
             name: 'password',
             value: $this->password,
-        )))->when($this->initials, fn (Collection $params) => $params->push(new MultipartValue(
-            name: 'initials',
-            value: $this->initials,
-        )))->when($this->parse_anchors, fn (Collection $params) => $params->push(new MultipartValue(
+        )))->when($this->initials, fn (Collection $params) => $params->push(
+            new MultipartValue(
+                name: 'alignment',
+                value: $this->initials['alignment'],
+            ),
+            new MultipartValue(
+                name: 'y',
+                value: $this->initials['y'],
+            ),
+        ))->when($this->parse_anchors, fn (Collection $params) => $params->push(new MultipartValue(
             name: 'parse_anchors',
             value: $this->parse_anchors ? 'true' : 'false',
         )))->toArray();

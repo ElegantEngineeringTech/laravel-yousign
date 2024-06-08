@@ -17,7 +17,7 @@ class YousignWebhooksController
             'signature_validator' => YousignSignatureValidator::class,
             'webhook_profile' => config('yousign.webhooks.profile'),
             'webhook_model' => config('yousign.webhooks.model'),
-            'process_webhook_job' => ProcessStripeWebhookJob::class,
+            'process_webhook_job' => ProcessYousignWebhookJob::class,
         ]);
 
         return (new WebhookProcessor($request, $webhookConfig))->process();
