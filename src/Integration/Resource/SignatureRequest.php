@@ -23,7 +23,7 @@ class SignatureRequest extends Resource
      * @param  array  $source  Filter by source
      * @param  string  $q  Search on name
      */
-    public function getSignatureRequests(
+    public function get(
         ?string $status,
         ?int $limit,
         ?string $externalId,
@@ -33,7 +33,7 @@ class SignatureRequest extends Resource
         return $this->connector->send(new GetSignatureRequests($status, $limit, $externalId, $source, $q));
     }
 
-    public function createSignatureRequest(
+    public function create(
         string $name,
         string $delivery_mode = 'none',
         ?bool $ordered_signers = null,
@@ -70,7 +70,7 @@ class SignatureRequest extends Resource
     /**
      * @param  string  $signatureRequestId  Signature Request Id
      */
-    public function getSignatureRequest(
+    public function find(
         string $signatureRequestId,
 
     ): Response {
@@ -81,14 +81,14 @@ class SignatureRequest extends Resource
      * @param  string  $signatureRequestId  Signature Request Id
      * @param  bool  $permanentDelete  If true it will permanently delete the Signature Request. It will no longer be retrievable.
      */
-    public function deleteSignatureRequest(
+    public function delete(
         string $signatureRequestId,
         ?bool $permanentDelete,
     ): Response {
         return $this->connector->send(new DeleteSignatureRequest($signatureRequestId, $permanentDelete));
     }
 
-    public function updateSignatureRequest(
+    public function update(
         string $signatureRequestId,
         ?string $name = null,
         ?string $delivery_mode = null,
@@ -124,12 +124,12 @@ class SignatureRequest extends Resource
         ));
     }
 
-    public function activateSignatureRequest(string $signatureRequestId): Response
+    public function activate(string $signatureRequestId): Response
     {
         return $this->connector->send(new ActivateSignatureRequest($signatureRequestId));
     }
 
-    public function cancelSignatureRequest(
+    public function cancel(
         string $signatureRequestId,
         string $reason,
         ?string $custom_note = null
@@ -137,7 +137,7 @@ class SignatureRequest extends Resource
         return $this->connector->send(new CancelSignatureRequest($signatureRequestId, $reason, $custom_note));
     }
 
-    public function reactivateSignatureRequest(
+    public function reactivate(
         string $signatureRequestId,
         Carbon $expiration_date,
     ): Response {
