@@ -2,6 +2,7 @@
 
 namespace Elegantly\Yousign\Integration\Requests\Document;
 
+use Illuminate\Support\Collection;
 use Psr\Http\Message\StreamInterface;
 use Saloon\Contracts\Body\HasBody;
 use Saloon\Data\MultipartValue;
@@ -39,7 +40,7 @@ class UploadSignatureDocument extends Request implements HasBody
 
     protected function defaultBody(): array
     {
-        return [
+        return collect([
             new MultipartValue(
                 name: 'file',
                 value: $this->file,
@@ -48,22 +49,18 @@ class UploadSignatureDocument extends Request implements HasBody
                 name: 'nature',
                 value: $this->nature,
             ),
-            new MultipartValue(
-                name: 'insert_after_id',
-                value: $this->insert_after_id,
-            ),
-            new MultipartValue(
-                name: 'password',
-                value: $this->password,
-            ),
-            new MultipartValue(
-                name: 'initials',
-                value: $this->initials,
-            ),
-            new MultipartValue(
-                name: 'parse_anchors',
-                value: $this->parse_anchors ? 'true' : 'false',
-            ),
-        ];
+        ])->when($this->insert_after_id, fn (Collection $params) => $params->push(new MultipartValue(
+            name: 'insert_after_id',
+            value: $this->insert_after_id,
+        )))->when($this->password, fn (Collection $params) => $params->push(new MultipartValue(
+            name: 'password',
+            value: $this->password,
+        )))->when($this->initials, fn (Collection $params) => $params->push(new MultipartValue(
+            name: 'initials',
+            value: $this->initials,
+        )))->when($this->parse_anchors, fn (Collection $params) => $params->push(new MultipartValue(
+            name: 'parse_anchors',
+            value: $this->parse_anchors ? 'true' : 'false',
+        )))->toArray();
     }
 }
