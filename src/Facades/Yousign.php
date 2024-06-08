@@ -5,7 +5,7 @@ namespace Elegantly\Yousign\Facades;
 use Illuminate\Support\Facades\Facade;
 
 /**
- * @method static YousignConnector client()
+ * @method static YousignConnector connector()
  *
  * @see \Elegantly\Yousign\Yousign
  */
