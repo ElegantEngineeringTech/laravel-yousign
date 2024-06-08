@@ -2,7 +2,6 @@
 
 namespace Elegantly\Yousign\Integration\Requests\ElectronicSeal;
 
-use DateTime;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
 
@@ -11,22 +10,19 @@ use Saloon\Http\Request;
  */
 class ListElectronicSealImages extends Request
 {
-	protected Method $method = Method::GET;
+    protected Method $method = Method::GET;
 
+    public function resolveEndpoint(): string
+    {
+        return '/electronic_seal_images';
+    }
 
-	public function resolveEndpoint(): string
-	{
-		return "/electronic_seal_images";
-	}
+    public function __construct()
+    {
+    }
 
-
-	public function __construct()
-	{
-	}
-
-
-	public function defaultQuery(): array
-	{
-		return array_filter([]);
-	}
+    public function defaultQuery(): array
+    {
+        return array_filter([]);
+    }
 }

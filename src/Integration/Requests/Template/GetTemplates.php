@@ -2,7 +2,6 @@
 
 namespace Elegantly\Yousign\Integration\Requests\Template;
 
-use DateTime;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
 
@@ -11,22 +10,19 @@ use Saloon\Http\Request;
  */
 class GetTemplates extends Request
 {
-	protected Method $method = Method::GET;
+    protected Method $method = Method::GET;
 
+    public function resolveEndpoint(): string
+    {
+        return '/templates';
+    }
 
-	public function resolveEndpoint(): string
-	{
-		return "/templates";
-	}
+    public function __construct()
+    {
+    }
 
-
-	public function __construct()
-	{
-	}
-
-
-	public function defaultQuery(): array
-	{
-		return array_filter([]);
-	}
+    public function defaultQuery(): array
+    {
+        return array_filter([]);
+    }
 }

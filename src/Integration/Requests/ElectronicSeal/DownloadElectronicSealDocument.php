@@ -2,7 +2,6 @@
 
 namespace Elegantly\Yousign\Integration\Requests\ElectronicSeal;
 
-use DateTime;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
 
@@ -11,20 +10,15 @@ use Saloon\Http\Request;
  */
 class DownloadElectronicSealDocument extends Request
 {
-	protected Method $method = Method::GET;
+    protected Method $method = Method::GET;
 
+    public function resolveEndpoint(): string
+    {
+        return "/electronic_seal_documents/{$this->electronicSealDocumentId}/download";
+    }
 
-	public function resolveEndpoint(): string
-	{
-		return "/electronic_seal_documents/{$this->electronicSealDocumentId}/download";
-	}
-
-
-	/**
-	 * @param string $electronicSealDocumentId
-	 */
-	public function __construct(
-		protected string $electronicSealDocumentId,
-	) {
-	}
+    public function __construct(
+        protected string $electronicSealDocumentId,
+    ) {
+    }
 }

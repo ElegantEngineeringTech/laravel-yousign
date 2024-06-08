@@ -2,7 +2,6 @@
 
 namespace Elegantly\Yousign\Integration\Requests\Follower;
 
-use DateTime;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
 
@@ -11,20 +10,18 @@ use Saloon\Http\Request;
  */
 class GetSignatureRequestsSignatureRequestIdFollowers extends Request
 {
-	protected Method $method = Method::GET;
+    protected Method $method = Method::GET;
 
+    public function resolveEndpoint(): string
+    {
+        return "/signature_requests/{$this->signatureRequestId}/followers";
+    }
 
-	public function resolveEndpoint(): string
-	{
-		return "/signature_requests/{$this->signatureRequestId}/followers";
-	}
-
-
-	/**
-	 * @param string $signatureRequestId Signature Request Id
-	 */
-	public function __construct(
-		protected string $signatureRequestId,
-	) {
-	}
+    /**
+     * @param  string  $signatureRequestId  Signature Request Id
+     */
+    public function __construct(
+        protected string $signatureRequestId,
+    ) {
+    }
 }

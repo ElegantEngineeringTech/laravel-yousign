@@ -2,7 +2,6 @@
 
 namespace Elegantly\Yousign\Integration\Requests\AuditTrail;
 
-use DateTime;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
 
@@ -11,22 +10,20 @@ use Saloon\Http\Request;
  */
 class GetSignatureRequestsSignatureRequestIdSignersSignerIdAuditTrails extends Request
 {
-	protected Method $method = Method::GET;
+    protected Method $method = Method::GET;
 
+    public function resolveEndpoint(): string
+    {
+        return "/signature_requests/{$this->signatureRequestId}/signers/{$this->signerId}/audit_trails";
+    }
 
-	public function resolveEndpoint(): string
-	{
-		return "/signature_requests/{$this->signatureRequestId}/signers/{$this->signerId}/audit_trails";
-	}
-
-
-	/**
-	 * @param string $signatureRequestId Signature Request Id
-	 * @param string $signerId Signer Id
-	 */
-	public function __construct(
-		protected string $signatureRequestId,
-		protected string $signerId,
-	) {
-	}
+    /**
+     * @param  string  $signatureRequestId  Signature Request Id
+     * @param  string  $signerId  Signer Id
+     */
+    public function __construct(
+        protected string $signatureRequestId,
+        protected string $signerId,
+    ) {
+    }
 }

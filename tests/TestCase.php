@@ -2,9 +2,9 @@
 
 namespace Elegantly\Yousign\Tests;
 
+use Elegantly\Yousign\YousignServiceProvider;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Orchestra\Testbench\TestCase as Orchestra;
-use Elegantly\Yousign\YousignServiceProvider;
 
 class TestCase extends Orchestra
 {

@@ -2,7 +2,6 @@
 
 namespace Elegantly\Yousign\Integration\Requests\Contact;
 
-use DateTime;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
 
@@ -11,20 +10,18 @@ use Saloon\Http\Request;
  */
 class DeleteContactsContactId extends Request
 {
-	protected Method $method = Method::DELETE;
+    protected Method $method = Method::DELETE;
 
+    public function resolveEndpoint(): string
+    {
+        return "/contacts/{$this->contactId}";
+    }
 
-	public function resolveEndpoint(): string
-	{
-		return "/contacts/{$this->contactId}";
-	}
-
-
-	/**
-	 * @param string $contactId Contact Id
-	 */
-	public function __construct(
-		protected string $contactId,
-	) {
-	}
+    /**
+     * @param  string  $contactId  Contact Id
+     */
+    public function __construct(
+        protected string $contactId,
+    ) {
+    }
 }

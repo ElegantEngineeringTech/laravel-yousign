@@ -2,7 +2,6 @@
 
 namespace Elegantly\Yousign\Integration\Requests\Webhook;
 
-use DateTime;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
 
@@ -11,20 +10,18 @@ use Saloon\Http\Request;
  */
 class DeleteWebhooksWebhookId extends Request
 {
-	protected Method $method = Method::DELETE;
+    protected Method $method = Method::DELETE;
 
+    public function resolveEndpoint(): string
+    {
+        return "/webhooks/{$this->webhookId}";
+    }
 
-	public function resolveEndpoint(): string
-	{
-		return "/webhooks/{$this->webhookId}";
-	}
-
-
-	/**
-	 * @param string $webhookId Webhook Id
-	 */
-	public function __construct(
-		protected string $webhookId,
-	) {
-	}
+    /**
+     * @param  string  $webhookId  Webhook Id
+     */
+    public function __construct(
+        protected string $webhookId,
+    ) {
+    }
 }

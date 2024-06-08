@@ -2,7 +2,6 @@
 
 namespace Elegantly\Yousign\Integration\Requests\Field;
 
-use DateTime;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
 
@@ -13,24 +12,22 @@ use Saloon\Http\Request;
  */
 class DeleteSignatureRequestsSignatureRequestIdDocumentsDocumentIdFieldsFieldId extends Request
 {
-	protected Method $method = Method::DELETE;
+    protected Method $method = Method::DELETE;
 
+    public function resolveEndpoint(): string
+    {
+        return "/signature_requests/{$this->signatureRequestId}/documents/{$this->documentId}/fields/{$this->fieldId}";
+    }
 
-	public function resolveEndpoint(): string
-	{
-		return "/signature_requests/{$this->signatureRequestId}/documents/{$this->documentId}/fields/{$this->fieldId}";
-	}
-
-
-	/**
-	 * @param string $signatureRequestId Signature Request Id
-	 * @param string $documentId Document Id
-	 * @param string $fieldId Field Id
-	 */
-	public function __construct(
-		protected string $signatureRequestId,
-		protected string $documentId,
-		protected string $fieldId,
-	) {
-	}
+    /**
+     * @param  string  $signatureRequestId  Signature Request Id
+     * @param  string  $documentId  Document Id
+     * @param  string  $fieldId  Field Id
+     */
+    public function __construct(
+        protected string $signatureRequestId,
+        protected string $documentId,
+        protected string $fieldId,
+    ) {
+    }
 }

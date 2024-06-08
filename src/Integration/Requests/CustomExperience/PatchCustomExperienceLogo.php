@@ -2,7 +2,6 @@
 
 namespace Elegantly\Yousign\Integration\Requests\CustomExperience;
 
-use DateTime;
 use Saloon\Contracts\Body\HasBody;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
@@ -13,22 +12,20 @@ use Saloon\Traits\Body\HasJsonBody;
  */
 class PatchCustomExperienceLogo extends Request implements HasBody
 {
-	use HasJsonBody;
+    use HasJsonBody;
 
-	protected Method $method = Method::POST;
+    protected Method $method = Method::POST;
 
+    public function resolveEndpoint(): string
+    {
+        return "/custom_experiences/{$this->customExperienceId}/logo";
+    }
 
-	public function resolveEndpoint(): string
-	{
-		return "/custom_experiences/{$this->customExperienceId}/logo";
-	}
-
-
-	/**
-	 * @param string $customExperienceId Custom Experience Id
-	 */
-	public function __construct(
-		protected string $customExperienceId,
-	) {
-	}
+    /**
+     * @param  string  $customExperienceId  Custom Experience Id
+     */
+    public function __construct(
+        protected string $customExperienceId,
+    ) {
+    }
 }

@@ -2,7 +2,6 @@
 
 namespace Elegantly\Yousign\Integration\Requests\Metadata;
 
-use DateTime;
 use Saloon\Contracts\Body\HasBody;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
@@ -13,22 +12,20 @@ use Saloon\Traits\Body\HasJsonBody;
  */
 class PostSignatureRequestsSignatureRequestIdMetadata extends Request implements HasBody
 {
-	use HasJsonBody;
+    use HasJsonBody;
 
-	protected Method $method = Method::POST;
+    protected Method $method = Method::POST;
 
+    public function resolveEndpoint(): string
+    {
+        return "/signature_requests/{$this->signatureRequestId}/metadata";
+    }
 
-	public function resolveEndpoint(): string
-	{
-		return "/signature_requests/{$this->signatureRequestId}/metadata";
-	}
-
-
-	/**
-	 * @param string $signatureRequestId Signature Request Id
-	 */
-	public function __construct(
-		protected string $signatureRequestId,
-	) {
-	}
+    /**
+     * @param  string  $signatureRequestId  Signature Request Id
+     */
+    public function __construct(
+        protected string $signatureRequestId,
+    ) {
+    }
 }

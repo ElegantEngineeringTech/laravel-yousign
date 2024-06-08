@@ -2,7 +2,6 @@
 
 namespace Elegantly\Yousign\Integration\Requests\SignerDocumentRequest;
 
-use DateTime;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
 
@@ -11,22 +10,20 @@ use Saloon\Http\Request;
  */
 class GetSignatureRequestsSignatureRequestIdSignersSignerIdDocuments extends Request
 {
-	protected Method $method = Method::GET;
+    protected Method $method = Method::GET;
 
+    public function resolveEndpoint(): string
+    {
+        return "/signature_requests/{$this->signatureRequestId}/signers/{$this->signerId}/documents";
+    }
 
-	public function resolveEndpoint(): string
-	{
-		return "/signature_requests/{$this->signatureRequestId}/signers/{$this->signerId}/documents";
-	}
-
-
-	/**
-	 * @param string $signatureRequestId Signature Request Id
-	 * @param string $signerId Signer Id
-	 */
-	public function __construct(
-		protected string $signatureRequestId,
-		protected string $signerId,
-	) {
-	}
+    /**
+     * @param  string  $signatureRequestId  Signature Request Id
+     * @param  string  $signerId  Signer Id
+     */
+    public function __construct(
+        protected string $signatureRequestId,
+        protected string $signerId,
+    ) {
+    }
 }

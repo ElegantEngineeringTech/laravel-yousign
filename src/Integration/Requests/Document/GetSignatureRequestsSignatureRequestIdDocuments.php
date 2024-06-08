@@ -2,7 +2,6 @@
 
 namespace Elegantly\Yousign\Integration\Requests\Document;
 
-use DateTime;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
 
@@ -11,28 +10,25 @@ use Saloon\Http\Request;
  */
 class GetSignatureRequestsSignatureRequestIdDocuments extends Request
 {
-	protected Method $method = Method::GET;
+    protected Method $method = Method::GET;
 
+    public function resolveEndpoint(): string
+    {
+        return "/signature_requests/{$this->signatureRequestId}/documents";
+    }
 
-	public function resolveEndpoint(): string
-	{
-		return "/signature_requests/{$this->signatureRequestId}/documents";
-	}
+    /**
+     * @param  string  $signatureRequestId  Signature Request Id
+     * @param  null|string  $nature  Filter by nature
+     */
+    public function __construct(
+        protected string $signatureRequestId,
+        protected ?string $nature = null,
+    ) {
+    }
 
-
-	/**
-	 * @param string $signatureRequestId Signature Request Id
-	 * @param null|string $nature Filter by nature
-	 */
-	public function __construct(
-		protected string $signatureRequestId,
-		protected ?string $nature = null,
-	) {
-	}
-
-
-	public function defaultQuery(): array
-	{
-		return array_filter(['nature' => $this->nature]);
-	}
+    public function defaultQuery(): array
+    {
+        return array_filter(['nature' => $this->nature]);
+    }
 }

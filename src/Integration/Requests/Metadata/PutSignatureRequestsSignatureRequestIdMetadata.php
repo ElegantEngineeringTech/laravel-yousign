@@ -2,7 +2,6 @@
 
 namespace Elegantly\Yousign\Integration\Requests\Metadata;
 
-use DateTime;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
 
@@ -11,20 +10,18 @@ use Saloon\Http\Request;
  */
 class PutSignatureRequestsSignatureRequestIdMetadata extends Request
 {
-	protected Method $method = Method::PUT;
+    protected Method $method = Method::PUT;
 
+    public function resolveEndpoint(): string
+    {
+        return "/signature_requests/{$this->signatureRequestId}/metadata";
+    }
 
-	public function resolveEndpoint(): string
-	{
-		return "/signature_requests/{$this->signatureRequestId}/metadata";
-	}
-
-
-	/**
-	 * @param string $signatureRequestId Signature Request Id
-	 */
-	public function __construct(
-		protected string $signatureRequestId,
-	) {
-	}
+    /**
+     * @param  string  $signatureRequestId  Signature Request Id
+     */
+    public function __construct(
+        protected string $signatureRequestId,
+    ) {
+    }
 }

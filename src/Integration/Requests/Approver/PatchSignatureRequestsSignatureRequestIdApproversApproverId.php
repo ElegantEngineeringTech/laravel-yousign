@@ -2,7 +2,6 @@
 
 namespace Elegantly\Yousign\Integration\Requests\Approver;
 
-use DateTime;
 use Saloon\Contracts\Body\HasBody;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
@@ -13,24 +12,22 @@ use Saloon\Traits\Body\HasJsonBody;
  */
 class PatchSignatureRequestsSignatureRequestIdApproversApproverId extends Request implements HasBody
 {
-	use HasJsonBody;
+    use HasJsonBody;
 
-	protected Method $method = Method::PATCH;
+    protected Method $method = Method::PATCH;
 
+    public function resolveEndpoint(): string
+    {
+        return "/signature_requests/{$this->signatureRequestId}/approvers/{$this->approverId}";
+    }
 
-	public function resolveEndpoint(): string
-	{
-		return "/signature_requests/{$this->signatureRequestId}/approvers/{$this->approverId}";
-	}
-
-
-	/**
-	 * @param string $signatureRequestId Signature Request Id
-	 * @param string $approverId Approver Id
-	 */
-	public function __construct(
-		protected string $signatureRequestId,
-		protected string $approverId,
-	) {
-	}
+    /**
+     * @param  string  $signatureRequestId  Signature Request Id
+     * @param  string  $approverId  Approver Id
+     */
+    public function __construct(
+        protected string $signatureRequestId,
+        protected string $approverId,
+    ) {
+    }
 }

@@ -2,9 +2,11 @@
 
 namespace Elegantly\Yousign;
 
+use Elegantly\Yousign\Integration\YousignConnector;
+use Elegantly\Yousign\Webhooks\YousignWebhooksController;
+use Illuminate\Support\Facades\Route;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Elegantly\Yousign\Commands\YousignCommand;
 
 class YousignServiceProvider extends PackageServiceProvider
 {
@@ -17,9 +19,22 @@ class YousignServiceProvider extends PackageServiceProvider
          */
         $package
             ->name('laravel-yousign')
-            ->hasConfigFile()
-            ->hasViews()
-            ->hasMigration('create_laravel-yousign_table')
-            ->hasCommand(YousignCommand::class);
+            ->hasConfigFile();
+
+        Route::macro('yousignWebhooks', function ($url) {
+            return Route::post($url, YousignWebhooksController::class);
+        });
+    }
+
+    public function registeringPackage()
+    {
+        $this->app->scoped(Yousign::class, function () {
+            return new Yousign(
+                new YousignConnector(
+                    api_key: config('yousign.api_key'),
+                    sandbox: config('yousign.sandbox'),
+                )
+            );
+        });
     }
 }

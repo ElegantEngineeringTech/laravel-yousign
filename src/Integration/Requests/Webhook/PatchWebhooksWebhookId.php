@@ -2,7 +2,6 @@
 
 namespace Elegantly\Yousign\Integration\Requests\Webhook;
 
-use DateTime;
 use Saloon\Contracts\Body\HasBody;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
@@ -13,22 +12,20 @@ use Saloon\Traits\Body\HasJsonBody;
  */
 class PatchWebhooksWebhookId extends Request implements HasBody
 {
-	use HasJsonBody;
+    use HasJsonBody;
 
-	protected Method $method = Method::PATCH;
+    protected Method $method = Method::PATCH;
 
+    public function resolveEndpoint(): string
+    {
+        return "/webhooks/{$this->webhookId}";
+    }
 
-	public function resolveEndpoint(): string
-	{
-		return "/webhooks/{$this->webhookId}";
-	}
-
-
-	/**
-	 * @param string $webhookId Webhook Id
-	 */
-	public function __construct(
-		protected string $webhookId,
-	) {
-	}
+    /**
+     * @param  string  $webhookId  Webhook Id
+     */
+    public function __construct(
+        protected string $webhookId,
+    ) {
+    }
 }

@@ -2,7 +2,6 @@
 
 namespace Elegantly\Yousign\Integration\Requests\SignerDocumentRequest;
 
-use DateTime;
 use Saloon\Contracts\Body\HasBody;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
@@ -13,22 +12,20 @@ use Saloon\Traits\Body\HasJsonBody;
  */
 class PostSignatureRequestsSignatureRequestIdDocumentRequests extends Request implements HasBody
 {
-	use HasJsonBody;
+    use HasJsonBody;
 
-	protected Method $method = Method::POST;
+    protected Method $method = Method::POST;
 
+    public function resolveEndpoint(): string
+    {
+        return "/signature_requests/{$this->signatureRequestId}/document_requests";
+    }
 
-	public function resolveEndpoint(): string
-	{
-		return "/signature_requests/{$this->signatureRequestId}/document_requests";
-	}
-
-
-	/**
-	 * @param string $signatureRequestId Signature Request Id
-	 */
-	public function __construct(
-		protected string $signatureRequestId,
-	) {
-	}
+    /**
+     * @param  string  $signatureRequestId  Signature Request Id
+     */
+    public function __construct(
+        protected string $signatureRequestId,
+    ) {
+    }
 }
