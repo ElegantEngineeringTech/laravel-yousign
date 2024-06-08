@@ -2,23 +2,19 @@
 
 namespace Elegantly\Yousign\Integration\Requests\Document;
 
-use Saloon\Contracts\Body\HasBody;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
-use Saloon\Traits\Body\HasJsonBody;
 
 /**
- * post-signature_requests-signatureRequestId-documents-documentId-replace
+ * get-signature_requests-signatureRequestId-documents-documents-id-download
  */
-class PostSignatureRequestsSignatureRequestIdDocumentsDocumentIdReplace extends Request implements HasBody
+class DownloadSignatureDocument extends Request
 {
-    use HasJsonBody;
-
-    protected Method $method = Method::POST;
+    protected Method $method = Method::GET;
 
     public function resolveEndpoint(): string
     {
-        return "/signature_requests/{$this->signatureRequestId}/documents/{$this->documentId}/replace";
+        return "/signature_requests/{$this->signatureRequestId}/documents/{$this->documentId}/download";
     }
 
     /**
@@ -29,5 +25,12 @@ class PostSignatureRequestsSignatureRequestIdDocumentsDocumentIdReplace extends 
         protected string $signatureRequestId,
         protected string $documentId,
     ) {
+    }
+
+    public function defaultHeaders(): array
+    {
+        return [
+            'Accept' => 'application/pdf',
+        ];
     }
 }

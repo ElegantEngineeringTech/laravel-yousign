@@ -2,30 +2,28 @@
 
 namespace Elegantly\Yousign\Integration\Requests\Signer;
 
-use Saloon\Contracts\Body\HasBody;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
-use Saloon\Traits\Body\HasJsonBody;
 
 /**
- * post-signature_requests-signatureRequestId-signers
+ * delete-signature_requests-signatureRequestId-signers-signerId
  */
-class PostSignatureRequestsSignatureRequestIdSigners extends Request implements HasBody
+class DeleteSignatureSigner extends Request
 {
-    use HasJsonBody;
-
-    protected Method $method = Method::POST;
+    protected Method $method = Method::DELETE;
 
     public function resolveEndpoint(): string
     {
-        return "/signature_requests/{$this->signatureRequestId}/signers";
+        return "/signature_requests/{$this->signatureRequestId}/signers/{$this->signerId}";
     }
 
     /**
      * @param  string  $signatureRequestId  Signature Request Id
+     * @param  string  $signerId  Signer Id
      */
     public function __construct(
         protected string $signatureRequestId,
+        protected string $signerId,
     ) {
     }
 }

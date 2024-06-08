@@ -2,109 +2,109 @@
 
 namespace Elegantly\Yousign\Integration\Resource;
 
-use Elegantly\Yousign\Integration\Requests\Document\DeleteSignatureRequestsSignatureRequestIdDocumentsDocumentId;
-use Elegantly\Yousign\Integration\Requests\Document\GetSignatureRequestsSignatureRequestIdDocuments;
-use Elegantly\Yousign\Integration\Requests\Document\GetSignatureRequestsSignatureRequestIdDocumentsDocumentId;
-use Elegantly\Yousign\Integration\Requests\Document\GetSignatureRequestsSignatureRequestIdDocumentsDocumentsIdDownload;
-use Elegantly\Yousign\Integration\Requests\Document\GetSignatureRequestsSignatureRequestIdDocumentsDownload;
-use Elegantly\Yousign\Integration\Requests\Document\PatchSignatureRequestsSignatureRequestIdDocumentsDocumentId;
-use Elegantly\Yousign\Integration\Requests\Document\PostDocuments;
-use Elegantly\Yousign\Integration\Requests\Document\PostSignatureRequestsSignatureRequestIdDocuments;
-use Elegantly\Yousign\Integration\Requests\Document\PostSignatureRequestsSignatureRequestIdDocumentsDocumentIdReplace;
+use Elegantly\Yousign\Integration\Requests\Document\DeleteSignatureDocument;
+use Elegantly\Yousign\Integration\Requests\Document\DownloadSignatureDocument;
+use Elegantly\Yousign\Integration\Requests\Document\DownloadSignatureDocuments;
+use Elegantly\Yousign\Integration\Requests\Document\GetSignatureDocument;
+use Elegantly\Yousign\Integration\Requests\Document\GetSignatureDocuments;
+use Elegantly\Yousign\Integration\Requests\Document\ReplaceSignatureDocument;
+use Elegantly\Yousign\Integration\Requests\Document\UpdateSignatureDocument;
+use Elegantly\Yousign\Integration\Requests\Document\UploadSignatureDocument;
 use Elegantly\Yousign\Integration\Resource;
+use Psr\Http\Message\StreamInterface;
 use Saloon\Http\Response;
 
 class Document extends Resource
 {
-    /**
-     * @param  string  $signatureRequestId  Signature Request Id
-     * @param  string  $nature  Filter by nature
-     */
-    public function getSignatureRequestsSignatureRequestIdDocuments(
+    public function get(
         string $signatureRequestId,
         ?string $nature,
     ): Response {
-        return $this->connector->send(new GetSignatureRequestsSignatureRequestIdDocuments($signatureRequestId, $nature));
+        return $this->connector->send(new GetSignatureDocuments($signatureRequestId, $nature));
     }
 
     /**
-     * @param  string  $signatureRequestId  Signature Request Id
+     * @param  ?string  $version  Specify Documents version to download, "completed" is only available when the Signature Request status is "done".
+     * @param  ?bool  $archive  Force zip archive download
      */
-    public function postSignatureRequestsSignatureRequestIdDocuments(string $signatureRequestId): Response
-    {
-        return $this->connector->send(new PostSignatureRequestsSignatureRequestIdDocuments($signatureRequestId));
-    }
-
-    /**
-     * @param  string  $signatureRequestId  Signature Request Id
-     * @param  string  $version  Specify Documents version to download, "completed" is only available when the Signature Request status is "done".
-     * @param  bool  $archive  Force zip archive download
-     */
-    public function getSignatureRequestsSignatureRequestIdDocumentsDownload(
+    public function downloadAll(
         string $signatureRequestId,
         ?string $version,
         ?bool $archive,
     ): Response {
-        return $this->connector->send(new GetSignatureRequestsSignatureRequestIdDocumentsDownload($signatureRequestId, $version, $archive));
+        return $this->connector->send(new DownloadSignatureDocuments($signatureRequestId, $version, $archive));
     }
 
-    /**
-     * @param  string  $signatureRequestId  Signature Request Id
-     * @param  string  $documentId  Document Id
-     */
-    public function getSignatureRequestsSignatureRequestIdDocumentsDocumentId(
+    public function find(
         string $signatureRequestId,
         string $documentId,
     ): Response {
-        return $this->connector->send(new GetSignatureRequestsSignatureRequestIdDocumentsDocumentId($signatureRequestId, $documentId));
+        return $this->connector->send(new GetSignatureDocument($signatureRequestId, $documentId));
     }
 
     /**
-     * @param  string  $signatureRequestId  Signature Request Id
-     * @param  string  $documentId  Document Id
+     * @param  StreamInterface|resource|string|int  $file
      */
-    public function deleteSignatureRequestsSignatureRequestIdDocumentsDocumentId(
+    public function upload(
+        string $signatureRequestId,
+        mixed $file,
+        string $nature,
+        ?string $insert_after_id = null,
+        ?string $password = null,
+        ?array $initials = null,
+        ?bool $parse_anchors = false,
+    ): Response {
+        return $this->connector->send(new UploadSignatureDocument(
+            $signatureRequestId,
+            $file,
+            $nature,
+            $insert_after_id,
+            $password,
+            $initials,
+            $parse_anchors
+        ));
+    }
+
+    public function delete(
         string $signatureRequestId,
         string $documentId,
     ): Response {
-        return $this->connector->send(new DeleteSignatureRequestsSignatureRequestIdDocumentsDocumentId($signatureRequestId, $documentId));
+        return $this->connector->send(new DeleteSignatureDocument($signatureRequestId, $documentId));
+    }
+
+    public function update(
+        string $signatureRequestId,
+        string $documentId,
+        ?string $nature = null,
+        ?string $insert_after_id = null,
+        ?string $password = null,
+        ?array $initials = null,
+    ): Response {
+        return $this->connector->send(new UpdateSignatureDocument(
+            $signatureRequestId,
+            $documentId,
+            $nature,
+            $insert_after_id,
+            $password,
+            $initials
+        ));
+    }
+
+    public function download(
+        string $signatureRequestId,
+        string $documentId,
+    ): Response {
+        return $this->connector->send(new DownloadSignatureDocument($signatureRequestId, $documentId));
     }
 
     /**
-     * @param  string  $signatureRequestId  Signature Request Id
-     * @param  string  $documentId  Document Id
+     * @param  StreamInterface|resource|string|int  $file
      */
-    public function patchSignatureRequestsSignatureRequestIdDocumentsDocumentId(
+    public function replace(
         string $signatureRequestId,
         string $documentId,
+        mixed $file,
     ): Response {
-        return $this->connector->send(new PatchSignatureRequestsSignatureRequestIdDocumentsDocumentId($signatureRequestId, $documentId));
-    }
-
-    /**
-     * @param  string  $signatureRequestId  Signature Request Id
-     * @param  string  $documentId  Document Id
-     */
-    public function getSignatureRequestsSignatureRequestIdDocumentsDocumentsIdDownload(
-        string $signatureRequestId,
-        string $documentId,
-    ): Response {
-        return $this->connector->send(new GetSignatureRequestsSignatureRequestIdDocumentsDocumentsIdDownload($signatureRequestId, $documentId));
-    }
-
-    /**
-     * @param  string  $signatureRequestId  Signature Request Id
-     * @param  string  $documentId  Document Id
-     */
-    public function postSignatureRequestsSignatureRequestIdDocumentsDocumentIdReplace(
-        string $signatureRequestId,
-        string $documentId,
-    ): Response {
-        return $this->connector->send(new PostSignatureRequestsSignatureRequestIdDocumentsDocumentIdReplace($signatureRequestId, $documentId));
-    }
-
-    public function postDocuments(): Response
-    {
-        return $this->connector->send(new PostDocuments());
+        return $this->connector->send(new ReplaceSignatureDocument($signatureRequestId, $documentId, $file));
     }
 }

@@ -8,11 +8,9 @@ use Saloon\Http\Request;
 use Saloon\Traits\Body\HasJsonBody;
 
 /**
- * post-signature_requests-signatureRequestId-signers-signerId-sign
- *
- * Sign a Signature Request on behalf of a given Signer.
+ * post-signature_requests-signatureRequestId-signers-signerId-send_reminder
  */
-class PostSignatureRequestsSignatureRequestIdSignersSignerIdSign extends Request implements HasBody
+class SendReminderSignatureSigner extends Request implements HasBody
 {
     use HasJsonBody;
 
@@ -20,7 +18,7 @@ class PostSignatureRequestsSignatureRequestIdSignersSignerIdSign extends Request
 
     public function resolveEndpoint(): string
     {
-        return "/signature_requests/{$this->signatureRequestId}/signers/{$this->signerId}/sign";
+        return "/signature_requests/{$this->signatureRequestId}/signers/{$this->signerId}/send_reminder";
     }
 
     /**

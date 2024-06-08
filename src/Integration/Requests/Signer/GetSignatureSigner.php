@@ -6,22 +6,24 @@ use Saloon\Enums\Method;
 use Saloon\Http\Request;
 
 /**
- * get-signature_requests-signatureRequestId-signers
+ * get-signers-signersId
  */
-class GetSignatureRequestsSignatureRequestIdSigners extends Request
+class GetSignatureSigner extends Request
 {
     protected Method $method = Method::GET;
 
     public function resolveEndpoint(): string
     {
-        return "/signature_requests/{$this->signatureRequestId}/signers";
+        return "/signature_requests/{$this->signatureRequestId}/signers/{$this->signerId}";
     }
 
     /**
      * @param  string  $signatureRequestId  Signature Request Id
+     * @param  string  $signerId  Signer Id
      */
     public function __construct(
         protected string $signatureRequestId,
+        protected string $signerId,
     ) {
     }
 }

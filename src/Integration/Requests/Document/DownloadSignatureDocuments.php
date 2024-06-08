@@ -8,7 +8,7 @@ use Saloon\Http\Request;
 /**
  * get-signature_requests-signatureRequestId-documents-download
  */
-class GetSignatureRequestsSignatureRequestIdDocumentsDownload extends Request
+class DownloadSignatureDocuments extends Request
 {
     protected Method $method = Method::GET;
 
@@ -32,5 +32,12 @@ class GetSignatureRequestsSignatureRequestIdDocumentsDownload extends Request
     public function defaultQuery(): array
     {
         return array_filter(['version' => $this->version, 'archive' => $this->archive]);
+    }
+
+    public function defaultHeaders(): array
+    {
+        return [
+            'Accept' => 'application/zip, application/pdf',
+        ];
     }
 }

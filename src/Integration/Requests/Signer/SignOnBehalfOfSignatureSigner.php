@@ -8,17 +8,19 @@ use Saloon\Http\Request;
 use Saloon\Traits\Body\HasJsonBody;
 
 /**
- * patch-signature_requests-signatureRequestId-signers-signerId
+ * post-signature_requests-signatureRequestId-signers-signerId-sign
+ *
+ * Sign a Signature Request on behalf of a given Signer.
  */
-class PatchSignatureRequestsSignatureRequestIdSignersSignerId extends Request implements HasBody
+class SignOnBehalfOfSignatureSigner extends Request implements HasBody
 {
     use HasJsonBody;
 
-    protected Method $method = Method::PATCH;
+    protected Method $method = Method::POST;
 
     public function resolveEndpoint(): string
     {
-        return "/signature_requests/{$this->signatureRequestId}/signers/{$this->signerId}";
+        return "/signature_requests/{$this->signatureRequestId}/signers/{$this->signerId}/sign";
     }
 
     /**

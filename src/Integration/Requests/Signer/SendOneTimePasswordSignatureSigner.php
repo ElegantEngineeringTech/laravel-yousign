@@ -14,7 +14,7 @@ use Saloon\Traits\Body\HasJsonBody;
  * signing flow into your application and allowing the Signer to sign through the API. Once the OTP is
  * sent, the Signer must provide it back to complete the Signature Request.
  */
-class PostSignatureRequestsSignatureRequestIdSignersSignerIdSendOtp extends Request implements HasBody
+class SendOneTimePasswordSignatureSigner extends Request implements HasBody
 {
     use HasJsonBody;
 

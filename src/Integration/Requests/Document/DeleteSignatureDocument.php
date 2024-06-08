@@ -8,7 +8,7 @@ use Saloon\Http\Request;
 /**
  * delete-signature_requests-signatureRequestId-documents-documentId
  */
-class DeleteSignatureRequestsSignatureRequestIdDocumentsDocumentId extends Request
+class DeleteSignatureDocument extends Request
 {
     protected Method $method = Method::DELETE;
 

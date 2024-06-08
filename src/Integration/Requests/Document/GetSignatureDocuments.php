@@ -2,19 +2,15 @@
 
 namespace Elegantly\Yousign\Integration\Requests\Document;
 
-use Saloon\Contracts\Body\HasBody;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
-use Saloon\Traits\Body\HasJsonBody;
 
 /**
- * post-signature_requests-signatureRequestId-documents
+ * get-signature_requests-signatureRequestId-documents
  */
-class PostSignatureRequestsSignatureRequestIdDocuments extends Request implements HasBody
+class GetSignatureDocuments extends Request
 {
-    use HasJsonBody;
-
-    protected Method $method = Method::POST;
+    protected Method $method = Method::GET;
 
     public function resolveEndpoint(): string
     {
@@ -23,9 +19,16 @@ class PostSignatureRequestsSignatureRequestIdDocuments extends Request implement
 
     /**
      * @param  string  $signatureRequestId  Signature Request Id
+     * @param  null|string  $nature  Filter by nature
      */
     public function __construct(
         protected string $signatureRequestId,
+        protected ?string $nature = null,
     ) {
+    }
+
+    public function defaultQuery(): array
+    {
+        return array_filter(['nature' => $this->nature]);
     }
 }

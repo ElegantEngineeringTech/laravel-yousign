@@ -6,15 +6,15 @@ use Saloon\Enums\Method;
 use Saloon\Http\Request;
 
 /**
- * get-signature_requests-signatureRequestId-documents-documents-id-download
+ * get-signature_requests-signatureRequestId-documents-documentId
  */
-class GetSignatureRequestsSignatureRequestIdDocumentsDocumentsIdDownload extends Request
+class GetSignatureDocument extends Request
 {
     protected Method $method = Method::GET;
 
     public function resolveEndpoint(): string
     {
-        return "/signature_requests/{$this->signatureRequestId}/documents/{$this->documentId}/download";
+        return "/signature_requests/{$this->signatureRequestId}/documents/{$this->documentId}";
     }
 
     /**
