@@ -2,6 +2,7 @@
 
 namespace Elegantly\Yousign\Facades;
 
+use Elegantly\Yousign\Integration\YousignConnector;
 use Illuminate\Support\Facades\Facade;
 
 /**
