@@ -22,6 +22,7 @@ use Elegantly\Yousign\Integration\Resource\Workspace;
 use Saloon\Http\Auth\TokenAuthenticator;
 use Saloon\Http\Connector;
 use Saloon\Traits\Plugins\AcceptsJson;
+use Saloon\Traits\Plugins\AlwaysThrowOnErrors;
 
 /**
  * Public Api v3
@@ -29,6 +30,7 @@ use Saloon\Traits\Plugins\AcceptsJson;
 class YousignConnector extends Connector
 {
     use AcceptsJson;
+    use AlwaysThrowOnErrors;
 
     public function __construct(
         public string $api_key,

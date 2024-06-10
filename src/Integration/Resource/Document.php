@@ -18,7 +18,7 @@ class Document extends BaseResource
 {
     public function get(
         string $signatureRequestId,
-        ?string $nature,
+        ?string $nature = null,
     ): Response {
         return $this->connector->send(new GetSignatureDocuments($signatureRequestId, $nature));
     }
@@ -29,8 +29,8 @@ class Document extends BaseResource
      */
     public function downloadAll(
         string $signatureRequestId,
-        ?string $version,
-        ?bool $archive,
+        ?string $version = null,
+        ?bool $archive = null,
     ): Response {
         return $this->connector->send(new DownloadSignatureDocuments($signatureRequestId, $version, $archive));
     }
