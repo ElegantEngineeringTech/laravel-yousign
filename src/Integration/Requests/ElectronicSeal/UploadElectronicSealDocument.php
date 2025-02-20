@@ -24,7 +24,5 @@ class UploadElectronicSealDocument extends Request implements HasBody
         return '/electronic_seal_documents';
     }
 
-    public function __construct()
-    {
-    }
+    public function __construct() {}
 }

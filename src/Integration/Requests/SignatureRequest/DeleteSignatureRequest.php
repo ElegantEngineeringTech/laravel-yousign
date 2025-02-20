@@ -26,8 +26,7 @@ class DeleteSignatureRequest extends Request
     public function __construct(
         protected string $signatureRequestId,
         protected ?bool $permanentDelete = null,
-    ) {
-    }
+    ) {}
 
     public function defaultQuery(): array
     {

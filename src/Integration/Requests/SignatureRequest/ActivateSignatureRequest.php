@@ -22,6 +22,5 @@ class ActivateSignatureRequest extends Request
      */
     public function __construct(
         protected string $signatureRequestId,
-    ) {
-    }
+    ) {}
 }

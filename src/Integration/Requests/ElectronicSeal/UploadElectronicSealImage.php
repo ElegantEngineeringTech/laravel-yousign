@@ -24,7 +24,5 @@ class UploadElectronicSealImage extends Request implements HasBody
         return '/electronic_seal_images';
     }
 
-    public function __construct()
-    {
-    }
+    public function __construct() {}
 }

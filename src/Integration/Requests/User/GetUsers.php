@@ -22,8 +22,7 @@ class GetUsers extends Request
      */
     public function __construct(
         protected ?int $limit = null,
-    ) {
-    }
+    ) {}
 
     public function defaultQuery(): array
     {

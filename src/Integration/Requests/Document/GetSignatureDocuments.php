@@ -24,8 +24,7 @@ class GetSignatureDocuments extends Request
     public function __construct(
         protected string $signatureRequestId,
         protected ?string $nature = null,
-    ) {
-    }
+    ) {}
 
     public function defaultQuery(): array
     {

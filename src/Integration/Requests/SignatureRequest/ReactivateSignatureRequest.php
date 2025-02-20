@@ -28,8 +28,7 @@ class ReactivateSignatureRequest extends Request implements HasBody
     public function __construct(
         protected string $signatureRequestId,
         protected Carbon $expiration_date,
-    ) {
-    }
+    ) {}
 
     public function defaultBody(): array
     {

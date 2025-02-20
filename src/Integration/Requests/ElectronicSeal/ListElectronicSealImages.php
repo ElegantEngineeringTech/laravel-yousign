@@ -17,9 +17,7 @@ class ListElectronicSealImages extends Request
         return '/electronic_seal_images';
     }
 
-    public function __construct()
-    {
-    }
+    public function __construct() {}
 
     public function defaultQuery(): array
     {

@@ -35,8 +35,7 @@ class UploadSignatureDocument extends Request implements HasBody
         protected readonly ?string $password = null,
         protected readonly ?array $initials = null,
         protected readonly ?bool $parse_anchors = false,
-    ) {
-    }
+    ) {}
 
     protected function defaultBody(): array
     {

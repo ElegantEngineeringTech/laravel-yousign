@@ -27,8 +27,7 @@ class GetConsumptions extends Request
         protected string $from,
         protected string $to,
         protected ?string $authenticationKey = null,
-    ) {
-    }
+    ) {}
 
     public function defaultQuery(): array
     {

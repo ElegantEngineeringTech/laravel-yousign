@@ -22,6 +22,5 @@ class GetCustomExperiencesCustomExperienceId extends Request
      */
     public function __construct(
         protected string $customExperienceId,
-    ) {
-    }
+    ) {}
 }

@@ -21,7 +21,5 @@ class PostWebhooksSubscriptions extends Request implements HasBody
         return '/webhooks';
     }
 
-    public function __construct()
-    {
-    }
+    public function __construct() {}
 }

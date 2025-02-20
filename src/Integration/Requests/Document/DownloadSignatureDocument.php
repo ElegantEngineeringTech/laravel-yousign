@@ -24,8 +24,7 @@ class DownloadSignatureDocument extends Request
     public function __construct(
         protected string $signatureRequestId,
         protected string $documentId,
-    ) {
-    }
+    ) {}
 
     public function defaultHeaders(): array
     {

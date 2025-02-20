@@ -14,12 +14,12 @@ class Webhook extends Resource
 {
     public function getWebhooks(): Response
     {
-        return $this->connector->send(new GetWebhooks());
+        return $this->connector->send(new GetWebhooks);
     }
 
     public function postWebhooksSubscriptions(): Response
     {
-        return $this->connector->send(new PostWebhooksSubscriptions());
+        return $this->connector->send(new PostWebhooksSubscriptions);
     }
 
     /**

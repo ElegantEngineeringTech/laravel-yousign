@@ -28,8 +28,7 @@ class CancelSignatureRequest extends Request implements HasBody
         protected string $signatureRequestId,
         protected string $reason,
         protected ?string $custom_note = null,
-    ) {
-    }
+    ) {}
 
     public function defaultBody(): array
     {

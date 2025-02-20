@@ -16,12 +16,12 @@ class CustomExperience extends Resource
 {
     public function getCustomExperiences(): Response
     {
-        return $this->connector->send(new GetCustomExperiences());
+        return $this->connector->send(new GetCustomExperiences);
     }
 
     public function postCustomExperience(): Response
     {
-        return $this->connector->send(new PostCustomExperience());
+        return $this->connector->send(new PostCustomExperience);
     }
 
     /**

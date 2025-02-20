@@ -10,6 +10,6 @@ class Template extends Resource
 {
     public function getTemplates(): Response
     {
-        return $this->connector->send(new GetTemplates());
+        return $this->connector->send(new GetTemplates);
     }
 }

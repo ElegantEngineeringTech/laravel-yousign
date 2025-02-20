@@ -21,7 +21,5 @@ class PostContact extends Request implements HasBody
         return '/contacts';
     }
 
-    public function __construct()
-    {
-    }
+    public function __construct() {}
 }

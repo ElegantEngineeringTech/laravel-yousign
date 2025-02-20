@@ -32,6 +32,5 @@ class SendOneTimePasswordSignatureSigner extends Request implements HasBody
     public function __construct(
         protected string $signatureRequestId,
         protected string $signerId,
-    ) {
-    }
+    ) {}
 }

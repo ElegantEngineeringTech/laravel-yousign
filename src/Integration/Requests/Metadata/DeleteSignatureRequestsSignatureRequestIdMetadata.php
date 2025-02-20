@@ -22,6 +22,5 @@ class DeleteSignatureRequestsSignatureRequestIdMetadata extends Request
      */
     public function __construct(
         protected string $signatureRequestId,
-    ) {
-    }
+    ) {}
 }

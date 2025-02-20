@@ -19,6 +19,5 @@ class GetElectronicSeal extends Request
 
     public function __construct(
         protected string $electronicSealId,
-    ) {
-    }
+    ) {}
 }

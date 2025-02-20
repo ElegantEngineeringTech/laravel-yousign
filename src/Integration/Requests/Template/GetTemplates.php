@@ -17,9 +17,7 @@ class GetTemplates extends Request
         return '/templates';
     }
 
-    public function __construct()
-    {
-    }
+    public function __construct() {}
 
     public function defaultQuery(): array
     {

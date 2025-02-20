@@ -26,6 +26,5 @@ class PatchCustomExperiencesCustomExperienceId extends Request implements HasBod
      */
     public function __construct(
         protected string $customExperienceId,
-    ) {
-    }
+    ) {}
 }

@@ -26,6 +26,5 @@ class PostSignatureRequestsSignatureRequestIdMetadata extends Request implements
      */
     public function __construct(
         protected string $signatureRequestId,
-    ) {
-    }
+    ) {}
 }

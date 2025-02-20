@@ -27,8 +27,7 @@ class GetSignatureRequests extends Request
         protected ?string $externalId = null,
         protected ?array $source = null,
         protected ?string $q = null,
-    ) {
-    }
+    ) {}
 
     public function defaultQuery(): array
     {

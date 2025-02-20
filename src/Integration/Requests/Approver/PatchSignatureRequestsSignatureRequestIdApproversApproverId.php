@@ -28,6 +28,5 @@ class PatchSignatureRequestsSignatureRequestIdApproversApproverId extends Reques
     public function __construct(
         protected string $signatureRequestId,
         protected string $approverId,
-    ) {
-    }
+    ) {}
 }

@@ -17,7 +17,5 @@ class GetWebhooks extends Request
         return '/webhooks';
     }
 
-    public function __construct()
-    {
-    }
+    public function __construct() {}
 }

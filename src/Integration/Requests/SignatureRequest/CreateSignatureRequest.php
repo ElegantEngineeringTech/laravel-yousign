@@ -37,8 +37,7 @@ class CreateSignatureRequest extends Request implements HasBody
         protected readonly ?string $signers_allowed_to_decline = null,
         protected readonly ?array $email_notification = null,
         protected readonly ?array $template_placeholders = null,
-    ) {
-    }
+    ) {}
 
     public function defaultBody(): array
     {

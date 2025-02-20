@@ -26,6 +26,5 @@ class GetSignatureRequestsSignatureRequestIdSignersSignerIdDocumentsSignerDocume
         protected string $signatureRequestId,
         protected string $signerId,
         protected string $signerDocumentId,
-    ) {
-    }
+    ) {}
 }

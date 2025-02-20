@@ -28,6 +28,5 @@ class PatchContactsContactId extends Request implements HasBody
      */
     public function __construct(
         protected string $contactId,
-    ) {
-    }
+    ) {}
 }

@@ -37,8 +37,7 @@ class CreateSignatureSigner extends Request implements HasBody
         protected readonly ?array $custom_text = null,
         protected readonly ?string $delivery_mode = null,
         protected readonly ?string $identification_attestation_id = null,
-    ) {
-    }
+    ) {}
 
     public function defaultBody(): array
     {

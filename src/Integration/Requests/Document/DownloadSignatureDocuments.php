@@ -26,8 +26,7 @@ class DownloadSignatureDocuments extends Request
         protected string $signatureRequestId,
         protected ?string $version = null,
         protected ?bool $archive = null,
-    ) {
-    }
+    ) {}
 
     public function defaultQuery(): array
     {

@@ -19,7 +19,7 @@ class ElectronicSeal extends Resource
 {
     public function postElectronicSeals(): Response
     {
-        return $this->connector->send(new PostElectronicSeals());
+        return $this->connector->send(new PostElectronicSeals);
     }
 
     public function getElectronicSeal(string $electronicSealId): Response
@@ -39,7 +39,7 @@ class ElectronicSeal extends Resource
 
     public function uploadElectronicSealDocument(): Response
     {
-        return $this->connector->send(new UploadElectronicSealDocument());
+        return $this->connector->send(new UploadElectronicSealDocument);
     }
 
     public function downloadElectronicSealDocument(string $electronicSealDocumentId): Response
@@ -49,12 +49,12 @@ class ElectronicSeal extends Resource
 
     public function listElectronicSealImages(): Response
     {
-        return $this->connector->send(new ListElectronicSealImages());
+        return $this->connector->send(new ListElectronicSealImages);
     }
 
     public function uploadElectronicSealImage(): Response
     {
-        return $this->connector->send(new UploadElectronicSealImage());
+        return $this->connector->send(new UploadElectronicSealImage);
     }
 
     public function downloadElectronicSealImage(string $electronicSealImageId): Response

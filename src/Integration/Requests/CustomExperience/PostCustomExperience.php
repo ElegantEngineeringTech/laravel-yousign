@@ -21,7 +21,5 @@ class PostCustomExperience extends Request implements HasBody
         return '/custom_experiences';
     }
 
-    public function __construct()
-    {
-    }
+    public function __construct() {}
 }

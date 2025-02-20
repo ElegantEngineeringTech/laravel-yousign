@@ -17,9 +17,7 @@ class GetCustomExperiences extends Request
         return '/custom_experiences';
     }
 
-    public function __construct()
-    {
-    }
+    public function __construct() {}
 
     public function defaultQuery(): array
     {

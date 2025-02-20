@@ -28,6 +28,5 @@ class DeleteSignatureRequestsSignatureRequestIdDocumentsDocumentIdFieldsFieldId 
         protected string $signatureRequestId,
         protected string $documentId,
         protected string $fieldId,
-    ) {
-    }
+    ) {}
 }

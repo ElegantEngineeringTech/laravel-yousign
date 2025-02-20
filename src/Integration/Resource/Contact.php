@@ -22,7 +22,7 @@ class Contact extends Resource
 
     public function postContact(): Response
     {
-        return $this->connector->send(new PostContact());
+        return $this->connector->send(new PostContact);
     }
 
     /**

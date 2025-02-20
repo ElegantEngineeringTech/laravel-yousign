@@ -26,6 +26,5 @@ class PostSignatureRequestsSignatureRequestIdDocumentRequests extends Request im
      */
     public function __construct(
         protected string $signatureRequestId,
-    ) {
-    }
+    ) {}
 }

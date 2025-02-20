@@ -21,7 +21,5 @@ class PostElectronicSeals extends Request implements HasBody
         return '/electronic_seals';
     }
 
-    public function __construct()
-    {
-    }
+    public function __construct() {}
 }

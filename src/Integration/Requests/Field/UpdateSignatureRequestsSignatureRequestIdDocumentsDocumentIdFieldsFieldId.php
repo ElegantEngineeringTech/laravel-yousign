@@ -32,6 +32,5 @@ class UpdateSignatureRequestsSignatureRequestIdDocumentsDocumentIdFieldsFieldId 
         protected string $signatureRequestId,
         protected string $documentId,
         protected string $fieldId,
-    ) {
-    }
+    ) {}
 }

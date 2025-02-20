@@ -29,6 +29,5 @@ class PostSignatureRequestsSignatureRequestIdApprovers extends Request implement
      */
     public function __construct(
         protected string $signatureRequestId,
-    ) {
-    }
+    ) {}
 }

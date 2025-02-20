@@ -22,6 +22,5 @@ class DeleteWebhooksWebhookId extends Request
      */
     public function __construct(
         protected string $webhookId,
-    ) {
-    }
+    ) {}
 }

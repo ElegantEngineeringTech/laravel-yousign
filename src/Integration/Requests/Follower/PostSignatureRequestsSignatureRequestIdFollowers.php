@@ -26,6 +26,5 @@ class PostSignatureRequestsSignatureRequestIdFollowers extends Request implement
      */
     public function __construct(
         protected string $signatureRequestId,
-    ) {
-    }
+    ) {}
 }

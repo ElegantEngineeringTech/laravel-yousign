@@ -26,8 +26,7 @@ class GetSignatureRequestsSignatureRequestIdDocumentsDocumentIdFields extends Re
         protected string $signatureRequestId,
         protected string $documentId,
         protected ?array $types = null,
-    ) {
-    }
+    ) {}
 
     public function defaultQuery(): array
     {

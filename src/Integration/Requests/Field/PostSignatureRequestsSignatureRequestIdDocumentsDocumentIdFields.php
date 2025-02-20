@@ -28,6 +28,5 @@ class PostSignatureRequestsSignatureRequestIdDocumentsDocumentIdFields extends R
     public function __construct(
         protected string $signatureRequestId,
         protected string $documentId,
-    ) {
-    }
+    ) {}
 }

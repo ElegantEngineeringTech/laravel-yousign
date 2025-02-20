@@ -22,6 +22,5 @@ class DeleteCustomExperience extends Request
      */
     public function __construct(
         protected string $customExperienceId,
-    ) {
-    }
+    ) {}
 }

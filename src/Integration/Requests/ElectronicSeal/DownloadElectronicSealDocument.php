@@ -19,6 +19,5 @@ class DownloadElectronicSealDocument extends Request
 
     public function __construct(
         protected string $electronicSealDocumentId,
-    ) {
-    }
+    ) {}
 }

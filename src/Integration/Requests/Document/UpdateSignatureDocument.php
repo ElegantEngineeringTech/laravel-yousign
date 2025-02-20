@@ -32,8 +32,7 @@ class UpdateSignatureDocument extends Request implements HasBody
         protected readonly ?string $insert_after_id = null,
         protected readonly ?string $password = null,
         protected readonly ?array $initials = null,
-    ) {
-    }
+    ) {}
 
     public function defaultBody(): array
     {

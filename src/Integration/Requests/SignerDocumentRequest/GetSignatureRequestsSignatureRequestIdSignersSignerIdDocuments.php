@@ -24,6 +24,5 @@ class GetSignatureRequestsSignatureRequestIdSignersSignerIdDocuments extends Req
     public function __construct(
         protected string $signatureRequestId,
         protected string $signerId,
-    ) {
-    }
+    ) {}
 }

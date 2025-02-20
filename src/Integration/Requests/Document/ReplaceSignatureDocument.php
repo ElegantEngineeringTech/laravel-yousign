@@ -30,8 +30,7 @@ class ReplaceSignatureDocument extends Request implements HasBody
         protected string $signatureRequestId,
         protected string $documentId,
         protected readonly mixed $file,
-    ) {
-    }
+    ) {}
 
     protected function defaultBody(): array
     {
