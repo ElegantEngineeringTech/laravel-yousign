@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Elegantly\Yousign\Webhooks;
 
 use Illuminate\Http\Request;

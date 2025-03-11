@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Elegantly\Yousign\Integration\Requests\CustomExperience;
 
 use Saloon\Enums\Method;
@@ -21,6 +23,6 @@ class GetCustomExperiences extends Request
 
     public function defaultQuery(): array
     {
-        return array_filter([]);
+        return [];
     }
 }

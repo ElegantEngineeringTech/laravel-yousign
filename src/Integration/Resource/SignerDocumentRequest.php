@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Elegantly\Yousign\Integration\Resource;
 
 use Elegantly\Yousign\Integration\Requests\SignerDocumentRequest\DeleteSignatureRequestsSignatureRequestIdSignersSignerIdDocuments;

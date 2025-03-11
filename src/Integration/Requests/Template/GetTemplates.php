@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Elegantly\Yousign\Integration\Requests\Template;
 
 use Saloon\Enums\Method;
@@ -21,6 +23,6 @@ class GetTemplates extends Request
 
     public function defaultQuery(): array
     {
-        return array_filter([]);
+        return [];
     }
 }
