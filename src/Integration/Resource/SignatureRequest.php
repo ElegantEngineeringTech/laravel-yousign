@@ -74,7 +74,6 @@ class SignatureRequest extends Resource
      */
     public function find(
         string $signatureRequestId,
-
     ): Response {
         return $this->connector->send(new GetSignatureRequest($signatureRequestId));
     }
