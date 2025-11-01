@@ -36,7 +36,7 @@ class ProcessYousignWebhookJob extends ProcessWebhookJob
         }
 
         if (! class_exists($jobClass)) {
-            throw new Exception("Could not process webhook id `{$this->webhookCall->id}` because the configured jobclass `$jobClass` does not exist.");
+            throw new Exception("Could not process webhook id `{$this->webhookCall->id}` because the configured jobclass `{$jobClass}` does not exist.");
         }
 
         dispatch(new $jobClass($this->webhookCall));

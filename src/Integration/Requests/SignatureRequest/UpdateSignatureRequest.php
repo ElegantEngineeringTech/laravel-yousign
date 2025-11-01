@@ -40,7 +40,7 @@ class UpdateSignatureRequest extends Request implements HasBody
         protected readonly ?string $custom_experience_id = null,
         protected readonly ?string $workspace_id = null,
         protected readonly ?string $audit_trail_locale = null,
-        protected readonly ?string $signers_allowed_to_decline = null,
+        protected readonly ?bool $signers_allowed_to_decline = null,
         protected readonly ?array $email_notification = null,
         protected readonly ?array $template_placeholders = null,
     ) {}

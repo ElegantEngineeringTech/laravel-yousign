@@ -47,7 +47,7 @@ class SignatureRequest extends Resource
         ?string $custom_experience_id = null,
         ?string $workspace_id = null,
         ?string $audit_trail_locale = null,
-        ?string $signers_allowed_to_decline = null,
+        ?bool $signers_allowed_to_decline = null,
         ?array $email_notification = null,
         ?array $template_placeholders = null,
     ): Response {
@@ -103,7 +103,7 @@ class SignatureRequest extends Resource
         ?string $custom_experience_id = null,
         ?string $workspace_id = null,
         ?string $audit_trail_locale = null,
-        ?string $signers_allowed_to_decline = null,
+        ?bool $signers_allowed_to_decline = null,
         ?array $email_notification = null,
         ?array $template_placeholders = null
     ): Response {
