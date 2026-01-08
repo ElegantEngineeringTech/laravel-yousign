@@ -14,7 +14,7 @@ class YousignWebhookProfile implements WebhookProfile
     {
         return ! WebhookCall::query()
             ->where('name', 'yousign')
-            ->where('payload->event_id', $request->get('event_id'))
+            ->where('payload->event_id', $request->input('event_id'))
             ->exists();
     }
 }
