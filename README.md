@@ -24,6 +24,9 @@ php artisan vendor:publish --tag="yousign-config"
 This is the contents of the published config file:
 
 ```php
+use Elegantly\Yousign\Webhooks\YousignWebhookProfile;
+use Spatie\WebhookClient\Models\WebhookCall;
+
 return [
     /**
      * The Yousign API key
@@ -64,12 +67,12 @@ return [
         * The classname of the model to be used. The class should equal or extend
         * Spatie\WebhookClient\Models\WebhookCall.
         */
-        'model' => \Spatie\WebhookClient\Models\WebhookCall::class,
+        'model' => WebhookCall::class,
 
         /**
          * This class determines if the webhook call should be stored and processed.
          */
-        'profile' => \Elegantly\Yousign\Webhooks\YousignWebhookProfile::class,
+        'profile' => YousignWebhookProfile::class,
 
         /*
         * Specify a connection and or a queue to process the webhooks
