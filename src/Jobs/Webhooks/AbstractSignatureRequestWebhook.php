@@ -6,12 +6,8 @@ namespace Elegantly\Yousign\Jobs\Webhooks;
 
 abstract class AbstractSignatureRequestWebhook extends AbstractYousignWebhook
 {
-    public function getSignatureRequest(?string $key = null): mixed
+    public function getSignatureRequest(): array
     {
-        if ($key) {
-            return data_get($this->webhookCall->payload, "data.signature_request.{$key}");
-        }
-
         return data_get($this->webhookCall->payload, 'data.signature_request');
     }
 }
