@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Elegantly\Yousign\Webhooks;
 
 use Illuminate\Http\Request;
+use Spatie\WebhookClient\Exceptions\InvalidConfig;
 use Spatie\WebhookClient\SignatureValidator\SignatureValidator;
 use Spatie\WebhookClient\WebhookConfig;
 
@@ -19,13 +20,20 @@ class YousignSignatureValidator implements SignatureValidator
             return true;
         }
 
+        $secret = $config->signingSecret;
+
+        if (blank($secret)) {
+            throw InvalidConfig::signingSecretNotSet();
+        }
+
         $expectedSignature = $request->header($config->signatureHeaderName);
 
-        $secret = $config->signingSecret;
-        $payload = $request->getContent();
+        if (! is_string($expectedSignature) || $expectedSignature === '') {
+            return false;
+        }
 
-        $computedSignature = 'sha256='.hash_hmac('sha256', $payload, $secret);
+        $computedSignature = 'sha256='.hash_hmac('sha256', $request->getContent(), $secret);
 
-        return hash_equals($expectedSignature, $computedSignature);
+        return hash_equals($computedSignature, $expectedSignature);
     }
 }
